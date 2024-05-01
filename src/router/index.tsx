@@ -9,6 +9,7 @@ import { Admin } from '../views/Admin';
 import { Role } from '../views/System/Role';
 import { mainRoutesProps } from './inter';
 import { Request } from '../views/System/Request';
+import { HeroDetail } from '../views/Hero/HeroDetail';
 // 如何动态渲染路由 
 
 export const mainRoutes: Array<mainRoutesProps> = [
@@ -18,6 +19,14 @@ export const mainRoutes: Array<mainRoutesProps> = [
         label: 'Characters',
         title: 'Characters',
         element: <Hero></Hero>
+    },
+    {
+        key: '/hero/:id',// 侧边栏英雄界面
+        icon: <PieChartOutlined></PieChartOutlined>,
+        label: 'CharactersDetail',
+        title: 'CharactersDetail',
+        element: <HeroDetail></HeroDetail>,
+        hidden: true
     },
     {
         key: '/user',// 侧边栏用户信息

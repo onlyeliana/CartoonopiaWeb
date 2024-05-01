@@ -7,5 +7,6 @@ export interface mainRoutesProps {
     label: string,
     title: string,
     element?: ReactNode,
-    children?: mainRoutesProps[]
+    children?: mainRoutesProps[],
+    hidden?: boolean
 }

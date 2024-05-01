@@ -2,16 +2,21 @@ import React, { useEffect, useState } from 'react';
 import { Layout, theme } from 'antd';
 import SideMenu from './components/SideMenu';
 import { AppHeader } from './components/AppHeader';
-import { Route, Routes, Navigate } from 'react-router-dom';
+import { Route, Routes, Navigate, useLocation } from 'react-router-dom';
 import { mainRoutesProps } from '../router/inter';
 
 import { mainRoutes } from '../router';
 import { AppBreadCrumb } from './components/AppBreadCrumb';
 
+
 const { Content, Sider } = Layout;
+const hidden: React.CSSProperties = {
+    display: "none",
+}
 
 const MainLayout: React.FC = () => {
     const [collapsed, setCollapsed] = useState(false);
+    const location = useLocation()
     const {
         token: { colorBgContainer, borderRadiusLG },
     } = theme.useToken();
@@ -35,7 +40,7 @@ const MainLayout: React.FC = () => {
                 <SideMenu></SideMenu>
             </Sider>
             <Layout>
-                <AppHeader></AppHeader>
+                <div style={location.pathname.includes("/hero") ? hidden : {}}><AppHeader></AppHeader></div>
                 <Content style={{ margin: '0 16px' }}>
                     <AppBreadCrumb></AppBreadCrumb>
                     <div
@@ -52,7 +57,7 @@ const MainLayout: React.FC = () => {
                         <Routes>
                             <Route path='/' element={<Navigate to={'/hero'}></Navigate>}></Route>
                             {realRoutes.map(item => {
-                                return <Route path={item.key} element={item.element}></Route>
+                                return <Route path={item.key} element={item.element} key={item.key}></Route>
                             })}
                         </Routes>
                     </div>
