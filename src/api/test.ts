@@ -1,4 +1,4 @@
-import { characterProps } from '../types/alltype';
+import { characterProps, } from '../types/alltype';
 import request from '../utils/request';
 import { testdataProps } from './types/type';
 
@@ -15,6 +15,8 @@ export const addCharacter = (characterItem: characterProps) => {
         characterItem
     )
 }
+
+
 
 export const getCharacterList = () => {
     return request.get("/classes/characters")
