@@ -203,6 +203,7 @@ const FavouriteCom: React.FC = () => {
                     })
                 }
             }
+            setloading(false)
         })
 
     }, [])
